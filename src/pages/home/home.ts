@@ -16,7 +16,7 @@ export class HomePage {
   map: any;
  
   constructor(public navCtrl: NavController, public geolocation: Geolocation, public http: Http) {
-    this.data.username = '';
+    this.data.desc = '';
     this.data.response = '';
 
     this.http = http;
@@ -76,10 +76,12 @@ export class HomePage {
     this.geolocation.getCurrentPosition().then((position) => {
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
-        let latLng = {lat: lat, lon:lon}
-   
+	let latLng = {lat: lat, lon:lon}
+
+    var desc = this.data.desc;
+    var desc_loc = {location: latLng, description: desc}
     var link = 'http://localhost/ionic_php_server/api.php';
-    var myData = JSON.stringify(latLng);
+    var myData = JSON.stringify(desc_loc);
  
  
     this.http.post(link, myData)

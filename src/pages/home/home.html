@@ -12,23 +12,23 @@
 <ion-content padding>
   <div #map id="map"></div>
 
-  <ion-list>
-  <!--
-  <ion-item>
-    <ion-label floating>Location</ion-label>
-    <ion-input type="text" name="latLng" [(ngModel)]="data.latLng"></ion-input>
-  </ion-item> 
-  -->
+ <ion-list> 
  
+ <ion-item>
+   <ion-label floating>Report a Problem</ion-label>
+   <ion-input type="text" name="desc" [(ngModel)]="data.desc"></ion-input>
+ </ion-item> 
+ 
+
   <button ion-button block (click)="submit()">Submit to server</button>
   </ion-list>
- 
+
   <ion-card>
-  <ion-card-header>
-    Response
-  </ion-card-header>
-  <ion-card-content>
-    <b>{{data.response}}</b>
-  </ion-card-content>
- </ion-card>
+    <ion-card-header>
+      Response
+    </ion-card-header>
+      <ion-card-content>
+	<b>{{data.response}}</b>
+      </ion-card-content>
+    </ion-card>
 </ion-content>
