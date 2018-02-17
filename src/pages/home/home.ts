@@ -79,8 +79,8 @@ export class HomePage {
 	let latLng = {lat: lat, lon:lon}
 
     var desc = this.data.desc;
-    var desc_loc = {location: latLng, description: desc}
-    var link = 'http://localhost/ionic_php_server/api.php';
+    var desc_loc = {lat: lat, lon: lon, desc: desc}
+    var link = 'http://localhost:8000/results/';
     var myData = JSON.stringify(desc_loc);
  
  
