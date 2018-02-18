@@ -15,8 +15,12 @@
  <ion-list> 
  
  <ion-item>
-   <ion-label floating>Report a Problem</ion-label>
-   <ion-input type="text" name="desc" [(ngModel)]="data.desc"></ion-input>
+   <ion-label floating>Enter a title</ion-label>
+   <ion-input type="text" name="title" [(ngModel)]="data.title"></ion-input>
+ </ion-item>
+ <ion-item>
+   <ion-label floating>Enter a descrption</ion-label>
+   <ion-textarea type="text" name="desc" [(ngModel)]="data.desc"></ion-textarea>
  </ion-item> 
  
 
