@@ -81,7 +81,7 @@ export class HomePage {
     var title = this.data.title;
     var desc = this.data.desc;
     var desc_loc = {lat: lat, lon: lon, title: title, desc: desc}
-    var link = 'http://localhost:8000/results/';
+    var link = 'http://192.168.1.6:8000/results/';
     var myData = JSON.stringify(desc_loc);
  
  
