@@ -2,6 +2,8 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Http } from '@angular/http';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
  
 declare var google;
  
@@ -15,13 +17,37 @@ export class HomePage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
  
-  constructor(public navCtrl: NavController, public geolocation: Geolocation, public http: Http) {
+  constructor(public navCtrl: NavController, public geolocation: Geolocation, public http: Http, private transfer: Transfer,private camera: Camera) {
     this.data.desc = '';
     this.data.response = '';
 
     this.http = http;
  
   }  
+
+  upload()
+    {
+    let options = {
+	quality:100
+    };
+
+    this.camera.getPicture(options).then((imageData) => {
+    const fileTransfer: TransferObject = this.transfer.create();
+	let options1: FileUploadOptions = {
+	            fileKey: 'file',
+		    fileName: 'name.jpg',
+		    headers: {}
+					      	            
+		    }
+
+	    fileTransfer.upload(imageData, 'http://192.168.1.7/ionic_php_server/ionic/upload.php', options1)
+		.then((data) => {
+		alert("success");
+		}, (err) => {
+		alert("error" + JSON.stringify(err));
+	        });
+		});
+	}
 
   ionViewDidLoad(){
     this.loadMap();

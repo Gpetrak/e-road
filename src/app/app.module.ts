@@ -7,6 +7,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HttpModule} from '@angular/http';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import { HttpModule} from '@angular/http';
     MyApp,
     HomePage
   ],
-  providers: [
+  providers: [Transfer, Camera,
     StatusBar,
     SplashScreen,
     Geolocation,

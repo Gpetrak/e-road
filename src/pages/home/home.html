@@ -15,16 +15,17 @@
  <ion-list> 
  
  <ion-item>
-   <ion-label floating>Enter a title</ion-label>
+   <ion-label floating>Θέμα</ion-label>
    <ion-input type="text" name="title" [(ngModel)]="data.title"></ion-input>
  </ion-item>
  <ion-item>
-   <ion-label floating>Enter a description</ion-label>
+   <ion-label floating>Περιγραφή</ion-label>
    <ion-textarea type="text" name="desc" [(ngModel)]="data.desc"></ion-textarea>
  </ion-item> 
  
 
   <button ion-button block (click)="submit()">Submit to server</button>
+  <button ion-button block (click)="upload()" ion-button >Take Pic & Upload</button>
   </ion-list>
 
   <ion-card>
