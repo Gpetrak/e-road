@@ -40,7 +40,7 @@ export class HomePage {
 					      	            
 		    }
 
-	    fileTransfer.upload(imageData, 'http://192.168.1.7/ionic_php_server/ionic/upload.php', options1)
+	    fileTransfer.upload(imageData, 'http://192.168.1.6:8000/results/', options1)
 		.then((data) => {
 		alert("success");
 		}, (err) => {
