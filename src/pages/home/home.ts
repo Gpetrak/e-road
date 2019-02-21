@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Http } from '@angular/http';
 import leaflet from 'leaflet';
+import { AlertController } from 'ionic-angular';
  
 @Component({
   selector: 'home-page',
@@ -14,7 +15,7 @@ export class HomePage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
  
-  constructor(public navCtrl: NavController, public geolocation: Geolocation, public http: Http) {
+  constructor(public navCtrl: NavController, public geolocation: Geolocation, public http: Http, private alertCtrl: AlertController) {
     this.data.desc = '';
     this.data.response = '';
 
@@ -25,7 +26,7 @@ export class HomePage {
   ionViewDidLoad(){
     this.loadMap();
   }
- 
+
   loadMap(){
       this.map = leaflet.map("map").fitWorld();
       leaflet.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -39,6 +40,43 @@ export class HomePage {
         console.log('found you');
       })
  
+  }
+
+  presentPrompt() {
+    let alert = this.alertCtrl.create({
+      title: 'Login',
+      inputs: [
+        {
+          name: 'title',
+          placeholder: 'Title'
+        },
+        {
+          name: 'desc',
+          placeholder: 'Description',
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Submit',
+          handler: data => {
+            if (User.isValid(data.title, data.desc)) {
+      
+            } else {
+
+              return false;
+            }
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   submit() {
