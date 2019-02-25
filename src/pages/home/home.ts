@@ -34,20 +34,20 @@ export class HomePage {
 
   presentPrompt() {
     let alert = this.alertCtrl.create({
-      title: 'Fill the form',
+      title: 'Αναφορά Προβλήματος',
       inputs: [
         {
           name: 'title',
-          placeholder: 'Title'
+          placeholder: 'Τίτλος'
         },
         {
           name: 'desc',
-          placeholder: 'Description',
+          placeholder: 'Περιγραφή',
         }
       ],
       buttons: [
         {
-          text: 'Submit',
+          text: 'ΥΠΟΒΟΛΗ',
           handler: () => {
             this.geolocation.getCurrentPosition().then((position) => {
               let lat = position.coords.latitude;
@@ -70,7 +70,7 @@ export class HomePage {
         });
        } 
       }, {
-        text: 'Cancel',
+        text: 'ΚΛΕΙΣΙΜΟ',
         role: 'cancel',
         handler: data => {
           console.log('Cancel clicked');
