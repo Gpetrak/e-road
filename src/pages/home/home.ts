@@ -62,22 +62,35 @@ export class HomePage {
           handler: data => {
             console.log('Cancel clicked');
           }
-        },
-        {
+        }, {
           text: 'Submit',
-          handler: data => {
-            if (User.isValid(data.title, data.desc)) {
-      
-            } else {
-
-              return false;
-            }
-          }
-        }
-      ]
-    });
+          handler: () => {
+            this.geolocation.getCurrentPosition().then((position) => {
+              let lat = position.coords.latitude;
+              let lon = position.coords.longitude;
+              let latLng = {lat: lat, lon:lon}
+          
+              var title = this.data.title;
+              var desc = this.data.desc;
+              var desc_loc = {lat: lat, lon: lon, title: title, desc: desc}
+              var link = 'http://192.168.1.6:8000/results/';
+              var myData = JSON.stringify(desc_loc);
+       
+       
+          this.http.post(link, myData)
+            .subscribe(data => {
+            this.data.response = data["_body"]; 
+            }, error => {
+            console.log("Oooops!");
+          });
+        });
+      } 
+    }
+    ]
+    });    
     alert.present();
   }
+
 
   submit() {
     this.geolocation.getCurrentPosition().then((position) => {
