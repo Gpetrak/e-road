@@ -1,8 +1,9 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Crete - GIS: e-Road app
-    </ion-title>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Crete - GIS: e-Road app</ion-title>
     <!--<ion-buttons end>
       <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
     </ion-buttons> -->
@@ -10,33 +11,13 @@
 </ion-header>
 
 <ion-content>
-  <div #map id="map" style="width:100%; height:80%;">
+  <div #map id="map" style="width:100%; height:85%;">
 </div>
 
 <ion-item>
   <button ion-button block (click)="presentPrompt()">ΑΝΑΦΟΡΑ ΠΡΟΒΛΗΜΑΤΟΣ</button>
 </ion-item>
- <!-- <ion-list> 
- 
- <ion-item>
-   <ion-label floating>Enter a title</ion-label>
-   <ion-input type="text" name="title" [(ngModel)]="data.title"></ion-input>
- </ion-item>
- <ion-item>
-   <ion-label floating>Enter a description</ion-label>
-   <ion-textarea type="text" name="desc" [(ngModel)]="data.desc"></ion-textarea>
- </ion-item> 
- 
-
-  <button ion-button block (click)="submit()">Submit to server</button>
-  </ion-list>
-
-  <ion-card>
-    <ion-card-header>
-      Response
-    </ion-card-header>
-      <ion-card-content>
-	<b>{{data.response}}</b>
-      </ion-card-content>
-    </ion-card> -->
 </ion-content>
+
+
+<ion-nav #mycontent [root]="HomePage"></ion-nav>

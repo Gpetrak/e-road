@@ -1,16 +1,18 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { MenuController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Http } from '@angular/http';
 import leaflet from 'leaflet';
 // import 'leaflet-easybutton';
 import { AlertController } from 'ionic-angular';
- 
+
 @Component({
   selector: 'home-page',
   templateUrl: 'home.html'
 })
 export class HomePage {
+ 
   data:any = {};
  
   @ViewChild('map') mapElement: ElementRef;
@@ -20,6 +22,7 @@ export class HomePage {
               public geolocation: Geolocation, 
               public http: Http, 
               private alertCtrl: AlertController,
+              private menu: MenuController
               ) {
     this.data.desc = '';
     this.data.response = '';
@@ -27,6 +30,18 @@ export class HomePage {
     this.http = http;
  
   }  
+
+  openMenu() {
+    this.menu.open();
+  }
+
+  closeMenu() {
+    this.menu.close();
+  }
+
+  toggleMenu() {
+    this.menu.toggle();
+  }
 
   ionViewDidLoad(){
     this.loadMap();
@@ -85,14 +100,16 @@ export class HomePage {
       this.map = leaflet.map("map").fitWorld();
       leaflet.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attributions: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18
+        maxZoom: 10,
       }).addTo(this.map);
       this.map.locate({
         setView: true,
-        maxZoom: 6
+        maxZoom: 3
       }).on('locationfound', (e) => {
         console.log('found you');
       })
+
+      this.map.setView([2793330.286441, 4192617.047876]);
 
   }
 
