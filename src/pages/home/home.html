@@ -3,7 +3,7 @@
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title>Crete - GIS: e-Road app</ion-title>
+      <ion-title>e-Road</ion-title>
     <!--<ion-buttons end>
       <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
     </ion-buttons> -->
@@ -11,13 +11,12 @@
 </ion-header>
 
 <ion-content>
-  <div #map id="map" style="width:100%; height:85%;">
+  <div #map id="map" style="width:100%; height:92%;">
 </div>
 
-<ion-item>
-  <button ion-button block (click)="presentPrompt()">ΑΝΑΦΟΡΑ ΠΡΟΒΛΗΜΑΤΟΣ</button>
-</ion-item>
+<ion-buttons end>
+    <button ion-button class='btn' (click)="presentPrompt()">ΑΝΑΦΟΡΑ ΠΡΟΒΛΗΜΑΤΟΣ</button>
+  </ion-buttons>
+
 </ion-content>
-
-
 <ion-nav #mycontent [root]="HomePage"></ion-nav>

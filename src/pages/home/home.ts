@@ -4,6 +4,7 @@ import { MenuController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Http } from '@angular/http';
 import leaflet from 'leaflet';
+import 'leaflet-search';
 // import 'leaflet-easybutton';
 import { AlertController } from 'ionic-angular';
 
@@ -100,16 +101,36 @@ export class HomePage {
       this.map = leaflet.map("map").fitWorld();
       leaflet.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attributions: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 10,
+        maxZoom: 18,
       }).addTo(this.map);
       this.map.locate({
         setView: true,
-        maxZoom: 3
+        maxZoom: 16
       }).on('locationfound', (e) => {
-        console.log('found you');
+        let markerGroup = leaflet.featureGroup();
+        let marker: any = leaflet.marker([e.latitude, e.longitude]).on('click', () => {
+          alert('You are here !');
+        })
+        markerGroup.addLayer(marker);
+        this.map.addLayer(markerGroup);
+      }).on('locationerror', (err) => {
+          alert(err.message);
       })
 
-      this.map.setView([2793330.286441, 4192617.047876]);
+      var searchLayer = leaflet.layerGroup().addTo(this.map);
+      searchLayer.url = 'https://nominatim.openstreetmap.org/search?format=json&q={s}';
+      searchLayer.jsonpParam = 'json_callback';
+      searchLayer.propertyName = 'display_name';
+      searchLayer.propertyLoc = ['lat','lon'];
+      searchLayer.marker = leaflet.circleMarker([0,0],{radius:30});
+      searchLayer.autoCollapse = true;
+      searchLayer.autoType = false,
+      searchLayer.minLength = 2;
+      this.map.addControl( new leaflet.Control.Search({layer: searchLayer}) );
+      //searchLayer is a L.LayerGroup contains searched markers
+      
+      this.map.setView(new leaflet.LatLng(35.2551600,25.028161), 7);
+      // this.map.panTo(new leaflet.LatLng(35.3376661,24.1276382));
 
   }
 
