@@ -116,17 +116,18 @@ export class HomePage {
       }).on('locationerror', (err) => {
           alert(err.message);
       })
-
-      var searchLayer = leaflet.layerGroup().addTo(this.map);
-      searchLayer.url = 'https://nominatim.openstreetmap.org/search?format=json&q={s}';
-      searchLayer.jsonpParam = 'json_callback';
-      searchLayer.propertyName = 'display_name';
-      searchLayer.propertyLoc = ['lat','lon'];
-      searchLayer.marker = leaflet.circleMarker([0,0],{radius:30});
-      searchLayer.autoCollapse = true;
-      searchLayer.autoType = false,
-      searchLayer.minLength = 2;
-      this.map.addControl( new leaflet.Control.Search({layer: searchLayer}) );
+      
+      this.map.addControl( new leaflet.Control.Search({ 
+        url: 'https://nominatim.openstreetmap.org/search?format=json&q={s}',
+		    jsonpParam: 'json_callback',
+	    	propertyName: 'display_name',
+	    	propertyLoc: ['lat','lon'],
+	    	marker: leaflet.circleMarker([0,0],{radius:30}),
+	    	autoCollapse: true,
+	    	autoType: false,
+	    	minLength: 2
+	      }) );
+      
       //searchLayer is a L.LayerGroup contains searched markers
       
       this.map.setView(new leaflet.LatLng(35.2551600,25.028161), 7);
