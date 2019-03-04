@@ -11,6 +11,9 @@
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve"
   },
+  "config": {
+    "ionic_sass": "./config/sass.config.js"
+   },
   "dependencies": {
     "@angular/common": "5.0.3",
     "@angular/compiler": "5.0.3",
@@ -45,15 +48,6 @@
   "devDependencies": {
     "@ionic/app-scripts": "^3.2.3",
     "typescript": "2.4.2"
-  },
-
-   "scripts": {
-    "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
-  },
-
-  "config": {
-    "ionic_sass": "./config/sass.config.js"
   },
   "description": "An Ionic project",
   "cordova": {
