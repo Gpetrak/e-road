@@ -116,7 +116,7 @@ export class HomePage {
       }).on('locationerror', (err) => {
           alert(err.message);
       })
-      console.log(this.map.addControl( new leaflet.Control.Search()));
+     
       this.map.addControl( new leaflet.Control.Search({ 
         url: 'https://nominatim.openstreetmap.org/search?format=json&q={s}',
 		    jsonpParam: 'json_callback',
