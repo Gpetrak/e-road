@@ -58,6 +58,7 @@ export class HomePage {
         },
         {
           name: 'desc',
+          type: 'textarea',
           placeholder: 'Περιγραφή',
         }
       ],
@@ -126,7 +127,7 @@ export class HomePage {
 	    	autoCollapse: true,
 	    	autoType: false,
 	    	minLength: 2
-	      }) );
+        }) );
       
       //searchLayer is a L.LayerGroup contains searched markers
       

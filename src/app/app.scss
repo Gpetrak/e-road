@@ -1,6 +1,12 @@
-// http://ionicframework.com/docs/theming/
-
-
+ion-menu{
+    ion-content{
+     background-color: rgb(240, 240, 240) !important;
+    }
+   }
+.about-icon {
+    height: 30px;
+    width: 30px;
+}
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
