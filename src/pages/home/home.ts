@@ -25,6 +25,8 @@ export class HomePage {
               private alertCtrl: AlertController,
               private menu: MenuController
               ) {
+    
+    this.data.title = '';
     this.data.desc = '';
     this.data.response = '';
 
@@ -58,7 +60,6 @@ export class HomePage {
         },
         {
           name: 'desc',
-          type: 'textarea',
           placeholder: 'Περιγραφή',
         }
       ],
