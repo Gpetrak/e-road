@@ -66,16 +66,16 @@ export class HomePage {
       buttons: [
         {
           text: 'ΥΠΟΒΟΛΗ',
-          handler: () => {
+          handler: data => {
             this.geolocation.getCurrentPosition().then((position) => {
               let lat = position.coords.latitude;
               let lon = position.coords.longitude;
               let latLng = {lat: lat, lon:lon}
           
-              var title = this.data.title;
-              var desc = this.data.desc;
+              var title = data.title;
+              var desc = data.desc;
               var desc_loc = {lat: lat, lon: lon, title: title, desc: desc}
-              var link = 'http://192.168.1.6:8000/results/';
+              var link = 'http://192.168.1.5:8000/results/';
               var myData = JSON.stringify(desc_loc);
        
        
