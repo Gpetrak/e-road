@@ -13,7 +13,7 @@
   },
   "config": {
     "ionic_sass": "./config/sass.config.js"
-   },
+  },
   "dependencies": {
     "@angular/common": "5.0.3",
     "@angular/compiler": "5.0.3",
@@ -59,7 +59,6 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {}
     },
-   
     "platforms": [
       "android"
     ]
