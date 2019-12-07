@@ -1,5 +1,7 @@
 {
-  "name": "e-road",
-  "integrations": {},
+  "name": "roadbot",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
